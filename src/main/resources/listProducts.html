@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List existing products | WebShop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <h1>List of existing products</h1>
+        <div id="productList"></div>
+    </main>
+</body>
+<script>
+    fetch("/api/products").then(function (res) {
+        return res.text()
+    }).then(function (text) {
+        document.querySelector("#productList").innerHTML = text;
+    });
+</script>
+</html>
