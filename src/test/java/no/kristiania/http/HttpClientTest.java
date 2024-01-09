@@ -9,4 +9,9 @@ public class HttpClientTest {
     void shouldDoSomething() {
         assertEquals(200, 100+100);
     }
+
+    @Test
+    void shouldReturnStatusCode() {
+        assertEquals(200, new HttpClient("httpbin.org", 80, "/html").getStatusCode());
+    }
 }
