@@ -48,4 +48,8 @@ public class HttpClient {
     public String getHeader(String headerName) {
         return headerFields.get(headerName);
     }
+
+    public int getContentLength() {
+        return 0;
+    }
 }
