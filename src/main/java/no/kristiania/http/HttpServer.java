@@ -53,5 +53,8 @@ public class HttpServer {
 
     }
 
+    public int getPort() {
+        return serverSocket.getLocalPort();
+    }
 }
 
