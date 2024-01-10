@@ -7,7 +7,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HttpServer {
 
@@ -49,9 +51,16 @@ public class HttpServer {
 
         if (fileTarget.equals("/hello")) {
             String yourName = "world";
-
             if (query != null) {
-                yourName = query.split("=")[1];
+                Map<String, String> queryMap = new HashMap<>();
+                for (String queryParameter : query.split("&")) {
+                    int equalsPos = queryParameter.indexOf('=');
+                    String parameterName = queryParameter.substring(0, equalsPos);
+                    String parameterValue = queryParameter.substring(equalsPos+1);
+                    queryMap.put(parameterName, parameterValue);
+                }
+
+                yourName = queryMap.get("lastName") + ", " + queryMap.get("firstName");
             }
 
             String responseText = "<p>Hello " + yourName + "</p>";
