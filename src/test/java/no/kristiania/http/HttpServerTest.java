@@ -37,6 +37,13 @@ class HttpServerTest {
     }
 
     @Test
+    void shouldEchoQueryParameter() throws IOException {
+        HttpServer server = new HttpServer(0);
+        HttpClient client = new HttpClient("localhost", server.getPort(), "/hello?yourName=johannes");
+        assertEquals("<p>Hello johannes</p>", client.getMessageBody());
+    }
+
+    @Test
     void shouldServeFiles() throws IOException {
         HttpServer server = new HttpServer(0);
         server.setRoot(Paths.get("target/test-classes"));
@@ -60,4 +67,6 @@ class HttpServerTest {
         HttpClient client = new HttpClient("localhost", server.getPort(), "/example-file.html");
         assertEquals("text/html", client.getHeader("Content-Type"));
     }
+
+
 }
