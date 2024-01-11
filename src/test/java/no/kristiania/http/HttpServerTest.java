@@ -81,12 +81,12 @@ class HttpServerTest {
 
     @Test
     void shouldReturnCategoriesFromServer() throws IOException {
-        server.setCategories(List.of("Hvitevarer", "Datautstyr"));
+        server.setCategories(List.of("Appliances", "Computer Equipment"));
 
 
         HttpClient client = new HttpClient("localhost", server.getPort(), "/api/categoryOptions");
         assertEquals(
-                "<option value=1>Hvitevarer</option><option value=2>Datautstyr</option>",
+                "<option value=1>Appliances</option><option value=2>Computer Equipment</option>",
                 client.getMessageBody()
         );
     }

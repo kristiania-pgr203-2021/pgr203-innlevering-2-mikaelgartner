@@ -124,7 +124,7 @@ public class HttpServer {
 
     public static void main(String[] args) throws IOException {
         HttpServer httpServer = new HttpServer(1962);
-        httpServer.setCategories(List.of("Student", "Teaching assistant", "Teacher"));
+        httpServer.setCategories(List.of("Appliances", "Computer Equipment", "Gaming", "TV & Home Theater"));
         httpServer.setRoot(Paths.get("."));
 
     }
