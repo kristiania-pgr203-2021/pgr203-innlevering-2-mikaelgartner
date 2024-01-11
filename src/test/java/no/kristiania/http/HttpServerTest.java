@@ -91,7 +91,7 @@ class HttpServerTest {
         );
     }
 
-    //This test has to be altered to be more fitting for the criteria
+    //This test has to be changed to be more fitting for the criteria of "innlevering 2"
     @Test
     void shouldCreateNewPerson() throws IOException {
         HttpPostClient postClient = new HttpPostClient(
