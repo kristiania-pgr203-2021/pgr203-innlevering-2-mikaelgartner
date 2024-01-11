@@ -62,12 +62,12 @@ public class HttpServer {
 
             writeOkResponse(responseText, "text/html", clientSocket);
 
-        } else if (fileTarget.equals("/api/newPerson")) {
+        } else if (fileTarget.equals("/api/newProduct")) {
             Map<String, String> queryMap = parseRequestParameters(httpMessage.messageBody);
             Product product = new Product();
-            product.setProductName(queryMap.get("lastName"));
+            product.setProductName(queryMap.get("productName"));
             products.add(product);
-            writeOkResponse("it is done", "text/html", clientSocket);
+            writeOkResponse("is it really done?", "text/html", clientSocket);
 
         } else if (fileTarget.equals("/api/categoryOptions")) {
             String responseText = "";
