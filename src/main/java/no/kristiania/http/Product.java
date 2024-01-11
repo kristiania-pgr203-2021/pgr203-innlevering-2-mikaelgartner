@@ -1,8 +1,8 @@
 package no.kristiania.http;
 
-public class Person {
+public class Product {
     private String firstName;
-    private String lastName;
+    private String productName;
 
     public String getFirstName() {
         return firstName;
@@ -12,11 +12,11 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

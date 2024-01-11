@@ -16,7 +16,7 @@ public class HttpServer {
     private final ServerSocket serverSocket;
     private Path rootDirectory;
     private List<String> categories = new ArrayList<>();
-    private List<Person> people = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
     public HttpServer(int serverPort) throws IOException {
         serverSocket = new ServerSocket(serverPort);
@@ -64,9 +64,9 @@ public class HttpServer {
 
         } else if (fileTarget.equals("/api/newPerson")) {
             Map<String, String> queryMap = parseRequestParameters(httpMessage.messageBody);
-            Person person = new Person();
-            person.setLastName(queryMap.get("lastName"));
-            people.add(person);
+            Product product = new Product();
+            product.setProductName(queryMap.get("lastName"));
+            products.add(product);
             writeOkResponse("it is done", "text/html", clientSocket);
 
         } else if (fileTarget.equals("/api/categoryOptions")) {
@@ -141,8 +141,8 @@ public class HttpServer {
         this.categories = categories;
     }
 
-    public List<Person> getPeople() {
-        return people;
+    public List<Product> getProducts() {
+        return products;
     }
 }
 

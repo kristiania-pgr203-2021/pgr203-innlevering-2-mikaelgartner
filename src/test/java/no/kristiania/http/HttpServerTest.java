@@ -93,15 +93,15 @@ class HttpServerTest {
 
     //This test has to be changed to be more fitting for the criteria of "innlevering 2"
     @Test
-    void shouldCreateNewPerson() throws IOException {
+    void shouldCreateNewProduct() throws IOException {
         HttpPostClient postClient = new HttpPostClient(
                 "localhost",
                 server.getPort(),
-                "/api/newPerson",
-                "lastName=Persson&firstName=Test"
+                "/api/newProduct",
+                "productName=Microwave"
         );
         assertEquals(200, postClient.getStatusCode());
-        Person person = server.getPeople().get(0);
-        assertEquals("Persson", person.getLastName());
+        Product product = server.getProducts().get(0);
+        assertEquals("Microwave", product.getProductName());
     }
 }
