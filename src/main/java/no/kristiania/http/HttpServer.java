@@ -63,9 +63,10 @@ public class HttpServer {
 
             writeOkResponse(responseText, "text/html", clientSocket);
 
+            //In the else if below
             //It looks like products are added to the "products" ArrayList when pressing "Submit" on "newProduct" page,
             //using the dev tool it has payload with the category that is chosen, and the productName that is typed in
-            //if this is true, how do we go about displaying the products on the listProducts.html page?
+            //how do we display the newly added "product" from the ListArray to the listProducts.html page?
         } else if (fileTarget.equals("/api/newProduct")) {
             Map<String, String> queryMap = parseRequestParameters(httpMessage.messageBody);
             Product product = new Product();
