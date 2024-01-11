@@ -51,17 +51,21 @@ public class HttpServer {
             fileTarget = requestTarget;
         }
 
-        if (fileTarget.equals("/hello")) {
-            String yourName = "world";
+        //How do we get/fetch the "product" content from the server and display it to the "listProducts.html" page
+        if (fileTarget.equals("/api/products")) {
+            String yourProductName = "products page";
             if (query != null) {
                 Map<String, String> queryMap = parseRequestParameters(query);
-                yourName = queryMap.get("lastName") + ", " + queryMap.get("firstName");
-            }
+                yourProductName = queryMap.get("lastName") + ", " + queryMap.get("firstName");
 
-            String responseText = "<p>Hello " + yourName + "</p>";
+            }
+            String responseText = "<p>Welcome to the " + yourProductName + "</p>";
 
             writeOkResponse(responseText, "text/html", clientSocket);
 
+            //It looks like products are added to the "products" ArrayList when pressing "Submit" on "newProduct" page,
+            //using the dev tool it has payload with the category that is chosen, and the productName that is typed in
+            //if this is true, how do we go about displaying the products on the listProducts.html page?
         } else if (fileTarget.equals("/api/newProduct")) {
             Map<String, String> queryMap = parseRequestParameters(httpMessage.messageBody);
             Product product = new Product();
