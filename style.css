@@ -1,11 +1,12 @@
 body {
-    background: #55aa73;
+    padding: 2em;
+    background-color: #21537e;
 }
 
 main {
+    padding: 1em;
     background-color: white;
-    padding: 0.5em 1em;
-    border-radius: 0.5em;
-    max-width: 40em;
+    max-width: 60em;
     margin: auto;
+    border-radius: .5em;
 }
