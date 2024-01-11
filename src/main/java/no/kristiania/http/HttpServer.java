@@ -15,7 +15,7 @@ public class HttpServer {
 
     private final ServerSocket serverSocket;
     private Path rootDirectory;
-    private List<String> roles = new ArrayList<>();
+    private List<String> categories = new ArrayList<>();
     private List<Person> people = new ArrayList<>();
 
     public HttpServer(int serverPort) throws IOException {
@@ -61,18 +61,20 @@ public class HttpServer {
             String responseText = "<p>Hello " + yourName + "</p>";
 
             writeOkResponse(responseText, "text/html", clientSocket);
+
         } else if (fileTarget.equals("/api/newPerson")) {
             Map<String, String> queryMap = parseRequestParameters(httpMessage.messageBody);
             Person person = new Person();
             person.setLastName(queryMap.get("lastName"));
             people.add(person);
             writeOkResponse("it is done", "text/html", clientSocket);
-        } else if (fileTarget.equals("/api/roleOptions")) {
+
+        } else if (fileTarget.equals("/api/categoryOptions")) {
             String responseText = "";
 
             int value = 1;
-            for (String role : roles) {
-                responseText += "<option value=" + (value++) + ">" + role + "</option>";
+            for (String category : categories) {
+                responseText += "<option value=" + (value++) + ">" + category + "</option>";
             }
 
             writeOkResponse(responseText, "text/html", clientSocket);
@@ -122,7 +124,7 @@ public class HttpServer {
 
     public static void main(String[] args) throws IOException {
         HttpServer httpServer = new HttpServer(1962);
-        httpServer.setRoles(List.of("Student", "Teaching assistant", "Teacher"));
+        httpServer.setCategories(List.of("Student", "Teaching assistant", "Teacher"));
         httpServer.setRoot(Paths.get("."));
 
     }
@@ -135,8 +137,8 @@ public class HttpServer {
         this.rootDirectory = rootDirectory;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
 
     public List<Person> getPeople() {

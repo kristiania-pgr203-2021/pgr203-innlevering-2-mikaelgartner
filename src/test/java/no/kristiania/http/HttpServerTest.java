@@ -80,13 +80,13 @@ class HttpServerTest {
     }
 
     @Test
-    void shouldReturnRolesFromServer() throws IOException {
-        server.setRoles(List.of("Teacher", "Student"));
+    void shouldReturnCategoriesFromServer() throws IOException {
+        server.setCategories(List.of("Hvitevarer", "Datautstyr"));
 
 
-        HttpClient client = new HttpClient("localhost", server.getPort(), "/api/roleOptions");
+        HttpClient client = new HttpClient("localhost", server.getPort(), "/api/categoryOptions");
         assertEquals(
-                "<option value=1>Teacher</option><option value=2>Student</option>",
+                "<option value=1>Hvitevarer</option><option value=2>Datautstyr</option>",
                 client.getMessageBody()
         );
     }
