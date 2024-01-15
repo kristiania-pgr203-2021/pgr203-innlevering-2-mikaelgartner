@@ -51,15 +51,19 @@ public class HttpServer {
             fileTarget = requestTarget;
         }
 
-        //How do we get/fetch the "product" content from the server and display it to the "listProducts.html" page
+
         if (fileTarget.equals("/api/products")) {
-            String yourProductName = "products page";
+            String yourProductName = "<h3>You added the following items:</h3>";
+
             if (query != null) {
                 Map<String, String> queryMap = parseRequestParameters(query);
-                yourProductName = queryMap.get("lastName") + ", " + queryMap.get("firstName");
-
+                yourProductName = queryMap.get("productName");
             }
-            String responseText = "<p>Welcome to the " + yourProductName + "</p>";
+
+            String responseText = yourProductName;
+            for (Product product : products) {
+                responseText += "<h4><li>Product: " + product.getProductName() + "</li></h4>";
+            }
 
             writeOkResponse(responseText, "text/html", clientSocket);
 
@@ -72,7 +76,7 @@ public class HttpServer {
             Product product = new Product();
             product.setProductName(queryMap.get("productName"));
             products.add(product);
-            writeOkResponse("is it really done?", "text/html", clientSocket);
+            writeOkResponse("<h4>Product was successfully added to the list.</h4>", "text/html", clientSocket);
 
         } else if (fileTarget.equals("/api/categoryOptions")) {
             String responseText = "";

@@ -35,7 +35,7 @@ class HttpServerTest {
         assertAll(
                 () -> assertEquals(200, client.getStatusCode()),
                 () -> assertEquals("text/html", client.getHeader("Content-Type")),
-                () -> assertEquals("<p>Welcome to the products page</p>", client.getMessageBody())
+                () -> assertEquals("<h3>Your added items are:</h3>", client.getMessageBody())
         );
     }
 
