@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +5,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <main>
-        <h1>Add a new product</h1>
-        <form action="/api/newProduct" method="POST">
-            <p><label>Product category: <select name="category" id="category"></select></label></p>
-            <p><label>Product name: <input type="text" name="productName" /></label></p>
-            <p><button>Submit</button></p>
-        </form>
-    </main>
+<main>
+    <h1>Add a new product</h1>
+    <form action="/api/newProduct" method="POST">
+        <h4><p><label>Product category: <select name="category" id="category"></select></label></p></h4>
+        <h4><p><label>Product name: <input type="text" name="productName" /></label></p></h4>
+        <h4><p><button>Submit</button></p></h4>
+    </form>
+</main>
 </body>
 <script>
     fetch("/api/categoryOptions").then(function(res) {
